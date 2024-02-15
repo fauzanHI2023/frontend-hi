@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import React, { useEffect, useState, useCallback } from 'react';
 
 interface CardProps {
@@ -34,6 +35,8 @@ const Card: React.FC<CardProps> = ({ apiUrl }) => {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const limitPerPage = 10;
+  const accessToken = process.env.ACCESS_TOKEN;
+
 
   const fetchData = useCallback(async () => {
     try {
@@ -44,7 +47,11 @@ const Card: React.FC<CardProps> = ({ apiUrl }) => {
 
       setLoading(true);
 
-      const response = await fetch(`${apiUrl}?page=${page}&limit=${limitPerPage}`);
+      const response = await fetch(`${apiUrl}?page=${page}&limit=${limitPerPage}`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+        },
+      });
       if (!response.ok) {
         // Handle non-JSON response (e.g., HTML error page)
         console.error('Error fetching data. Status:', response.status);
@@ -100,6 +107,7 @@ const Card: React.FC<CardProps> = ({ apiUrl }) => {
       <div className="flex flex-wrap">
       {data.map((item, index) => (
         <div key={index} className="w-1/3 pb-4">
+            {/* <Image src={item.guid} width={200} height={200}/> */}
             <p>{formatDate(item.post_date || '')}</p>
             <h4>{item.post_title}</h4>
         </div>

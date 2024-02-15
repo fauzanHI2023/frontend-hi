@@ -1,8 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
-    domains: ['https://human-initiative.org/'],
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'human-initiative.org',
+        port: '',
+      },
+    ],
+  },
 }
-
-module.exports = nextConfig

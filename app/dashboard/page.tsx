@@ -1,9 +1,25 @@
-import React from 'react'
+"use client"
+import React from 'react';
+import DashboardLayout from '@/components/layouts/DashboardLayout';
+import { useSession, getSession } from 'next-auth/react';
 
-const Dashboard = () => {
+const DashboardPage: React.FC = () => {
+  const { data: session, status } = useSession();
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+  
+  if (session) {
+    window.location.href = '/';
+    return null;
+  }
+
   return (
-    <div>Hai Selamat Datang</div>
-  )
-}
+    <DashboardLayout>
+      <h1>Dashboard Index</h1>      
+    </DashboardLayout>
+  );
+};
 
-export default Dashboard
+export default DashboardPage;

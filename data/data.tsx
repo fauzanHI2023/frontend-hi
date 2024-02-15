@@ -1,3 +1,17 @@
+import { FaUserAlt } from "react-icons/fa";
+import { TbReportMoney } from "react-icons/tb";
+import { RiFileList2Fill } from "react-icons/ri";
+import { FiDownloadCloud } from "react-icons/fi";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { RiHomeOfficeFill } from "react-icons/ri";
+import { IoLibrary } from "react-icons/io5";
+import { RiMiniProgramFill } from "react-icons/ri";
+import { RiCustomerService2Line } from "react-icons/ri";
+import disasterImage from "../public/disaster.png";
+import childrenImage from "../public/children.png";
+import empowermentImage from "../public/empowerment.png";
+import infrastrukturImage from "../public/infrastruktur.png";
+
 export const menuItems = [
     { 
         id: 1, 
@@ -60,5 +74,56 @@ export const menuItems = [
             { id: 38, label: 'Event', url: '/publication/event' },
         ], 
     },
-  ];
+];
+
+interface menuDashboard {
+    label: string;
+    url: string;
+    icon: string;
+  }
+export const menuDashboard = [
+    { label: 'Akun Saya', url: '/dashboard/myaccount', icon: <FaUserAlt /> },
+    { label: 'Donasi', url: '/dashboard/donasi', icon: <TbReportMoney /> },
+    { label: 'Riwayat Donasi', url: '/dashboard/riwayatdonasi', icon: <RiFileList2Fill /> },
+    { label: 'Beneficeries', url: '/dashboard/beneficeries', icon: <FiDownloadCloud /> },
+    { label: 'Volunteer', url: '/dashboard/volunteer', icon: <FaPeopleGroup /> },
+    { label: 'Karir', url: '/dashboard/karir', icon: <RiHomeOfficeFill /> },
+    { label: 'Library', url: '/dashboard/library', icon: <IoLibrary /> },
+    { label: 'Implementator Program', url: '/dashboard/implementorprogram', icon: <RiMiniProgramFill /> },
+    { label: 'CSR Services', url: '/dashboard/csrservices', icon: <RiCustomerService2Line /> },
+];
+
+interface programCard {
+    icon: string;
+    label: string;
+    text: string;
+    url: string;
+}
+
+export const programCard = [
+    {
+        icon: disasterImage,
+        label: 'Initiative For Disaster',
+        text: 'Initiative for Disaster merupakan kumpulan dari berbagai program yang bertujuan mengurangi dampak bencana',
+        url: '/whatwedo/initiativefordisaster'
+    },
+    {
+        icon: childrenImage,
+        label: 'Initiative For Children',
+        text: 'Initiative for Disaster merupakan kumpulan dari berbagai program yang bertujuan mengurangi dampak bencana',
+        url: '/whatwedo/initiativeforchildren'
+    },
+    {
+        icon: empowermentImage,
+        label: 'Initiative For Empowerment',
+        text: 'Initiative for Disaster merupakan kumpulan dari berbagai program yang bertujuan mengurangi dampak bencana',
+        url: '/whatwedo/initiativeforempowerment'
+    },
+    {
+        icon: infrastrukturImage,
+        label: 'Infrastruktur Program',
+        text: 'Initiative for Disaster merupakan kumpulan dari berbagai program yang bertujuan mengurangi dampak bencana',
+        url: '/whatwedo/infrastructureprogram'
+    }
+]
   
